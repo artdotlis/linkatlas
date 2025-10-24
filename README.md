@@ -2,6 +2,10 @@
 
 [![release: 0.1.0](https://img.shields.io/badge/rel-0.1.0-blue.svg?style=flat-square)](https://gitlab.int.dsmz.de/artur.lissin/linkatlas#)
 [![MIT LICENSE](https://img.shields.io/badge/License-MIT-brightgreen.svg?style=flat-square)](https://choosealicense.com/licenses/mit/)
+[![Documentation Status](https://img.shields.io/badge/docs-GitHub-blue.svg?style=flat-square)](https://artdotlis.github.io/linkatlas/)
+
+[![main](https://github.com/artdotlis/linkatlas/actions/workflows/main.yml/badge.svg?branch=main)](https://github.com/artdotlis/linkatlas/actions/workflows/main.yml)
+
 
 ---
 
