@@ -1,0 +1,4 @@
+[dsmz_keycloak]
+pw = "pw"
+url = "https://sso.dsmz.de/auth/"
+user = "user"

@@ -1,0 +1,23 @@
+[project]
+name = "utilslink"
+version = "0.1.0"
+description = "Utility library for linkatlas."
+readme = "README.md"
+authors = [{ name = "artdotlis", email = "artdotlis@pm.me" }]
+requires-python = ">=3.13"
+dependencies = [
+    "urllib3 >=2.4,<3",
+    "pydantic >=2.10,<3",
+    "requests >2.32,<3",
+    "requests-cache >=1.2,<2",
+    "saim @ git+https://github.com/LeibnizDSMZ/saim.git@v0.8.0",
+    "mPyFlow @ git+https://github.com/artdotlis/mPyFlow.git#master",
+]
+
+[build-system]
+requires = ["uv_build>=0.8.22,<0.9.0"]
+build-backend = "uv_build"
+
+[tool.uv]
+package = true
+default-groups = []

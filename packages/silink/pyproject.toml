@@ -1,0 +1,30 @@
+[project]
+name = "silink"
+version = "0.1.0"
+description = """Search and link strains in the StrainInfo database."""
+readme = "README.md"
+authors = [{ name = "Artur Lissin", email = "artdotlis@pm.me" }]
+requires-python = ">=3.13"
+dependencies = [
+  # local
+  # central dependencies
+  "utilslink",
+  # other local
+  "taxalink",
+]
+
+[project.scripts]
+pub_update = "seqlink.update:run"
+pub_report = "seqlink.report:run"
+
+[build-system]
+requires = ["uv_build>=0.8.22,<0.9.0"]
+build-backend = "uv_build"
+
+[tool.uv.sources]
+utilslink = { workspace = true }
+taxalink = { workspace = true }
+
+[tool.uv]
+package = true
+default-groups = []

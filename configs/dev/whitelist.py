@@ -1,0 +1,50 @@
+# type: ignore
+# ruff: noqa
+ex_icpa  # (packages/taxalink/src/taxalink/schema/designation.py:6)
+gene  # (packages/utilslink/src/utilslink/schema/sequence.py:8)
+genome  # (packages/utilslink/src/utilslink/schema/sequence.py:9)
+r_rna  # (packages/utilslink/src/utilslink/schema/sequence.py:10)
+com  # (packages/utilslink/src/utilslink/schema/sequence.py:15)
+chr  # (packages/utilslink/src/utilslink/schema/sequence.py:16)
+sca  # (packages/utilslink/src/utilslink/schema/sequence.py:18)
+vir  # (packages/utilslink/src/utilslink/schema/taxa.py:10)
+sci  # (packages/utilslink/src/utilslink/schema/taxa.py:11)
+hyb  # (packages/utilslink/src/utilslink/schema/taxa.py:12)
+inf  # (packages/utilslink/src/utilslink/schema/taxa.py:13)
+culp  # (packages/utilslink/src/utilslink/schema/taxa.py:14)
+can  # (packages/utilslink/src/utilslink/schema/taxa.py:15)
+dou  # (packages/utilslink/src/utilslink/schema/taxa.py:16)
+pla  # (packages/utilslink/src/utilslink/schema/taxa.py:17)
+non  # (packages/utilslink/src/utilslink/schema/taxa.py:18)
+blk  # (packages/utilslink/src/utilslink/schema/taxa.py:19)
+otu  # (packages/utilslink/src/utilslink/schema/taxa.py:20)
+bac  # (packages/utilslink/src/utilslink/schema/taxa.py:203)
+arc  # (packages/utilslink/src/utilslink/schema/taxa.py:204)
+euk  # (packages/utilslink/src/utilslink/schema/taxa.py:205)
+vir  # (packages/utilslink/src/utilslink/schema/taxa.py:206)
+pa_int_bool  # (packages/utilslink/src/utilslink/parse/boolean.py:5)
+pa_date  # (packages/utilslink/src/utilslink/parse/date.py:26)
+pa_opt_date  # (packages/utilslink/src/utilslink/parse/date.py:30)
+pa_opt_float  # (packages/utilslink/src/utilslink/parse/number.py:17)
+pa_opt_str  # (packages/utilslink/src/utilslink/parse/string.py:10)
+get_ranks_list  # (packages/utilslink/src/utilslink/schema/taxa.py:242)
+get_ranks_abr_list  # (packages/utilslink/src/utilslink/schema/taxa.py:250)
+get_domain_list  # (packages/utilslink/src/utilslink/schema/taxa.py:254)
+get_gbif_types  # (packages/utilslink/src/utilslink/schema/taxa.py:258)
+is_domain  # (packages/utilslink/src/utilslink/schema/taxa.py:284)
+parse_gbif_rank  # (packages/utilslink/src/utilslink/schema/taxa.py:292)
+ch_str  # (packages/utilslink/src/utilslink/verify/types.py:56)
+ch_opt_str  # (packages/utilslink/src/utilslink/verify/types.py:60)
+ch_date  # (packages/utilslink/src/utilslink/verify/types.py:64)
+ch_opt_date  # (packages/utilslink/src/utilslink/verify/types.py:68)
+check_type_strict  # (packages/utilslink/src/utilslink/verify/types.py:13)
+check_bool_int  # (packages/utilslink/src/utilslink/verify/types.py:19)
+ch_str_float  # (packages/utilslink/src/utilslink/verify/types.py:76)
+running
+work
+read
+has_virus_in_name  # (packages/utilslink/src/utilslink/schema/taxa.py:306)
+_.has_input
+_.has_output
+_.wr_on_close
+_.on_error

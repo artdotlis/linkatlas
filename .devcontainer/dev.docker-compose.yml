@@ -1,0 +1,26 @@
+services:
+  dev:
+    user: devu
+    env_file:
+      - .env
+    build:
+      context: .
+      dockerfile: configs/docker/dev.Dockerfile
+      args:
+        USERNAME: devu
+        USER_UID: 1000
+        USER_GID: 1000
+        WORK_DIR: "/workspace"
+        UV: ${UV_INSTALL_DIR}
+        SSH_AUTH_SOCK: /ssh-agent
+    volumes:
+      - ${SSH_AUTH_SOCK:-/dev/null}:/ssh-agent
+      - .:/workspace
+      - ~/.config/git/config:/etc/gitconfig
+    networks:
+      - ollama
+
+networks:
+    ollama:
+        name: ollama
+        driver: bridge
