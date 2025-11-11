@@ -25,7 +25,7 @@ attrs==25.4.0 \
     # via
     #   cattrs
     #   requests-cache
-cafi @ git+https://github.com/LeibnizDSMZ/cafi.git@712ca256547a473bcdaed6b01fbf54f25fc087bf
+cafi @ git+https://github.com/LeibnizDSMZ/cafi.git@3238e949407d17defcd234e304f9f841df595bef
     # via saim
 cattrs==25.3.0 \
     --hash=sha256:1ac88d9e5eda10436c4517e390a4142d88638fe682c436c93db7ce4a277b884a \
@@ -309,7 +309,7 @@ rich==14.1.0 \
     --hash=sha256:536f5f1785986d6dbdea3c75205c473f970777b4a0d6c6dd1b696aa05a3fa04f \
     --hash=sha256:e497a48b844b0320d45007cdebfeaeed8db2a4f4bcf49f15e455cfc4af11eaa8
     # via mpyflow
-saim @ git+https://github.com/LeibnizDSMZ/saim.git@fb1ff4c22dc3f69e484f4074fa6b0e0228bd2caf
+saim @ git+https://github.com/LeibnizDSMZ/saim.git@2f336a22118249b18c50b905d0daa6a52188bec1
     # via utilslink
 six==1.17.0 \
     --hash=sha256:4721f391ed90541fddacab5acf947aa0d3dc7d27b2e1e8eda2be8970586c3274 \

@@ -203,9 +203,9 @@ pygments==2.19.2 \
     --hash=sha256:636cb2477cec7f8952536970bc533bc43743542f70392ae026374600add5b887 \
     --hash=sha256:86540386c03d588bb81d44bc3928634ff26449851e99741617ecb9037ee5ec0b
     # via mkdocs-material
-pymdown-extensions==10.16.1 \
-    --hash=sha256:aace82bcccba3efc03e25d584e6a22d27a8e17caa3f4dd9f207e49b787aa9a91 \
-    --hash=sha256:d6ba157a6c03146a7fb122b2b9a121300056384eafeec9c9f9e584adfdb2a32d
+pymdown-extensions==10.17 \
+    --hash=sha256:04ea928c1b8673bd891d758cd6392c05b45fa49014e4821dbb4c9078dd8ecade \
+    --hash=sha256:e93862f4f90b1cd19fe276b54373966458cae85643dc66f5eb437fca4725f497
     # via
     #   mkdocs-material
     #   mkdocstrings
