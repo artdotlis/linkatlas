@@ -10,7 +10,7 @@ dependencies = [
     "pydantic >=2.10,<3",
     "requests >2.32,<3",
     "requests-cache >=1.2,<2",
-    "saim @ git+https://github.com/LeibnizDSMZ/saim.git@v0.8.0",
+    "saim @ git+https://github.com/LeibnizDSMZ/saim.git@v0.9.2",
     "mPyFlow @ git+https://github.com/artdotlis/mPyFlow.git#master",
 ]
 
