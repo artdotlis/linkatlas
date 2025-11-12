@@ -1,6 +1,7 @@
 import argparse
 from pathlib import Path
 import sys
+from utilslink.configs.agent import create_agent_config
 from utilslink.configs.keycloak import create_lpsn_config
 from taxalink.manager.manager import TaxaUpdateManager
 
@@ -46,7 +47,8 @@ def run() -> None:
         print("Please provide an existing working directory!")
         exit(1)
     lpsn = create_lpsn_config(Path(conf))
-    manager = TaxaUpdateManager(working_dir, worker, lpsn)
+    agent = create_agent_config(Path(conf))
+    manager = TaxaUpdateManager(working_dir, worker, lpsn, agent)
     manager.update_database()
 
 

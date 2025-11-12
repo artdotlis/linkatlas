@@ -4,6 +4,7 @@ from pathlib import Path
 from mpyflow.shared.container.data import InputData
 from requests_cache import SQLiteCache, CachedSession, CachedResponse, OriginalResponse
 from publink.model.container.literature import LitUpdatePackage, LitType
+from utilslink.container.conf import AgentConf
 from utilslink.context.process import get_worker_ctx
 from utilslink.iter.pack import package_data
 from utilslink.request.cache import create_simple_get_cache, create_sqlite_backend
@@ -75,6 +76,7 @@ _FIL: Final[tuple[str, ...]] = (
 @final
 class EuPmcReader:
     __slots__ = (
+        "__acf",
         "__backend",
         "__data",
         "__in",
@@ -86,7 +88,9 @@ class EuPmcReader:
         "__work_dir",
     )
 
-    def __init__(self, work_dir: Path, version: str, package_size: int = 1000, /) -> None:
+    def __init__(
+        self, work_dir: Path, version: str, agent: AgentConf, package_size: int = 1000, /
+    ) -> None:
         super().__init__()
         self.__in = True
         self.__out = False
@@ -104,6 +108,7 @@ class EuPmcReader:
             counter=mpc.Value("i", 0),
         )
         self.__backend: SQLiteCache | None = None
+        self.__acf = agent
 
     @property
     def backend(self) -> SQLiteCache:
@@ -132,7 +137,7 @@ class EuPmcReader:
         self.backend.close()  # type: ignore
 
     def synchronize(self) -> Iterable[tuple[LitUpdatePackage, ...]]:
-        with create_simple_get_cache(7, self.backend) as session:
+        with create_simple_get_cache(7, self.backend, self.__acf.contact) as session:
             data_gen = (
                 LitUpdatePackage(
                     version=self.__version,

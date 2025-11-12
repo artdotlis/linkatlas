@@ -7,6 +7,7 @@ import tarfile
 from re import Pattern
 import re
 from taxalink.schema.designation import DesSource
+from utilslink.container.conf import AgentConf
 from utilslink.error.exceptions import RequestURIEx, ValidationEx
 from utilslink.iter.pack import package_data
 from utilslink.parse.string import conv_to_str
@@ -261,6 +262,7 @@ def _extract_from_file(
 @final
 class NcbiTaxReader:
     __slots__ = (
+        "__acf",
         "__backend",
         "__con",
         "__data",
@@ -273,7 +275,9 @@ class NcbiTaxReader:
         "__work_dir",
     )
 
-    def __init__(self, work_dir: Path, version: str, package_size: int = 1000, /) -> None:
+    def __init__(
+        self, work_dir: Path, version: str, agent: AgentConf, package_size: int = 1000, /
+    ) -> None:
         super().__init__()
         file = "taxon_name_ncbi"
         self.__backend: SQLiteCache | None = None
@@ -284,6 +288,7 @@ class NcbiTaxReader:
         self.__version = version
         self.__work_dir = work_dir
         self.__file = file
+        self.__acf = agent
         self.__package_size = package_size
 
     @property
@@ -311,7 +316,7 @@ class NcbiTaxReader:
         self.backend.close()  # type: ignore
 
     def synchronize(self) -> Iterable[tuple[TaxUpdatePackage, ...]]:
-        with create_simple_get_cache(7, self.backend) as session:
+        with create_simple_get_cache(7, self.backend, self.__acf.contact) as session:
             res = session.get(_NCBI_FTP, stream=True, timeout=60)
             if res.status_code == 200:
                 res_down = res.content

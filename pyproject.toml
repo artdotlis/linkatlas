@@ -84,6 +84,7 @@ version_files = [
   "packages/seqlink/pyproject.toml",
   "packages/taxalink/pyproject.toml",
   "packages/utilslink/pyproject.toml",
+  "packages/utilslink/src/utilslink/version.py:^VERSION",
 ]
 version_provider = "uv"
 version_type = "semver"

@@ -26,6 +26,7 @@ from publink.model.europe_pmc import EuPmcReader
 from publink.model.extract_work import ExtractWork
 from publink.model.literature_files import LiteratureReader
 from publink.model.open_alex import OpenAlexReader
+from utilslink.container.conf import AgentConf
 from utilslink.context.process import get_worker_ctx
 from utilslink.database.sqlite_manager import DatabaseWork
 from typing import Any, Self, final
@@ -42,7 +43,7 @@ type _CON_UP_T = tuple[AddDes | AddSeq | AddTaxa, ...]
 @final
 class PubUpdateManager:
     __slots__ = (
-        "__mail",
+        "__acf",
         "__work_dir",
         "__worker",
     )
@@ -50,14 +51,14 @@ class PubUpdateManager:
 
     def __init__(
         self,
-        mail: str,
+        agent: AgentConf,
         work_dir: Path,
         worker: int,
         /,
     ) -> None:
         self.__work_dir = work_dir
         self.__worker = worker if worker > 1 else 1
-        self.__mail = mail
+        self.__acf = agent
         super().__init__()
 
     def __new__(cls, *_args: Any) -> Self:
@@ -79,8 +80,8 @@ class PubUpdateManager:
             pub_worker_upd,
             ctx.RLock(),
         )
-        open_alex = OpenAlexReader(self.__work_dir, CURRENT_VER, self.__mail)
-        eu_pmc = EuPmcReader(self.__work_dir, CURRENT_VER)
+        open_alex = OpenAlexReader(self.__work_dir, CURRENT_VER, self.__acf)
+        eu_pmc = EuPmcReader(self.__work_dir, CURRENT_VER, self.__acf)
         lit_files = LiteratureReader(self.__work_dir, CURRENT_VER)
         extractor = ExtractWork(self.__work_dir, CURRENT_VER)
 

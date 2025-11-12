@@ -8,3 +8,10 @@ class LPSNConf:
     user: str
     pw: str
     url: str
+
+
+@final
+@dataclass(frozen=True, kw_only=True, slots=True)
+class AgentConf:
+    contact: str
+    mail: str

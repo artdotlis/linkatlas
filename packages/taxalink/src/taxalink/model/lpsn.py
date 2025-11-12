@@ -7,7 +7,7 @@ from concurrent.futures.thread import ThreadPoolExecutor
 from dataclasses import dataclass
 from pathlib import Path
 from taxalink.schema.designation import DesSource
-from utilslink.container.conf import LPSNConf
+from utilslink.container.conf import AgentConf, LPSNConf
 from utilslink.context.process import get_worker_ctx
 from utilslink.iter.pack import package_data
 from utilslink.parse.string import conv_to_str
@@ -200,6 +200,7 @@ def _get_taxa_info(
 @final
 class LpsnTaxReader:
     __slots__ = (
+        "__acf",
         "__backend",
         "__con",
         "__data",
@@ -214,7 +215,13 @@ class LpsnTaxReader:
     )
 
     def __init__(
-        self, work_dir: Path, conf: LPSNConf, version: str, package_size: int = 1000, /
+        self,
+        work_dir: Path,
+        conf: LPSNConf,
+        version: str,
+        agent: AgentConf,
+        package_size: int = 1000,
+        /,
     ) -> None:
         super().__init__()
         self.__in = True
@@ -234,6 +241,7 @@ class LpsnTaxReader:
         )
         self.__kcl = JWTCred(conf.user, conf.pw, "api.lpsn.public", conf.url)
         self.__backend: SQLiteCache | None = None
+        self.__acf = agent
 
     @property
     def backend(self) -> SQLiteCache:
@@ -262,7 +270,7 @@ class LpsnTaxReader:
         self.backend.close()  # type: ignore
 
     def synchronize(self) -> Iterable[tuple[TaxUpdatePackage, ...]]:
-        with create_simple_get_cache(7, self.backend) as session:
+        with create_simple_get_cache(7, self.backend, self.__acf.contact) as session:
             ses_con = _SesCon(
                 session=session,
                 lpsn_cred=self.__kcl,
