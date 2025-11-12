@@ -3,6 +3,7 @@ from pathlib import Path
 import sys
 
 from publink.manager.manager import PubUpdateManager
+from utilslink.configs.agent import create_agent_config
 
 
 def _parse_args(argv: list[str], /) -> tuple[str, int, str]:
@@ -31,27 +32,24 @@ def _parse_args(argv: list[str], /) -> tuple[str, int, str]:
         metavar="int",
     )
     parser.add_argument(
-        "-m",
-        "--mail",
-        action="store",
+        "-c",
+        "--config",
         type=str,
-        required=False,
-        help="the mail used for API service",
-        dest="mail",
-        metavar="mail",
-        default="",
+        required=True,
+        dest="conf",
     )
     args = parser.parse_args(argv)
-    return str(args.dir), int(args.worker), str(args.mail)
+    return str(args.dir), int(args.worker), str(args.conf)
 
 
 def run() -> None:
-    dir_p, worker, mail = _parse_args(sys.argv[1:])
+    dir_p, worker, conf = _parse_args(sys.argv[1:])
     working_dir = Path(dir_p)
     if not (working_dir.exists() and working_dir.is_dir()):
         print("Please provide an existing working directory!")
         exit(1)
-    manager = PubUpdateManager(mail, working_dir, worker)
+    agent = create_agent_config(Path(conf))
+    manager = PubUpdateManager(agent, working_dir, worker)
     manager.update_database()
 
 

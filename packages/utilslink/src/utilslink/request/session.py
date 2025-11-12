@@ -1,6 +1,9 @@
+from requests import Session
 from urllib3 import Retry
 
-from typing import Collection
+from typing import Collection, Final
+
+from utilslink.version import VERSION
 
 
 def create_default_retry_args() -> dict[str, int | float | Collection[int]]:
@@ -15,3 +18,16 @@ def create_default_retry_args() -> dict[str, int | float | Collection[int]]:
 
 def create_default_retry() -> Retry:
     return Retry(**create_default_retry_args())  # type: ignore
+
+
+BOT_NAME: Final[str] = "linkatlas"
+USER_AGENT: Final[str] = f"{BOT_NAME}-bot/{VERSION}"
+
+
+def set_bot_agent_header(session: Session, contact: str, /) -> None:
+    agent = (
+        f"{USER_AGENT} (Python library)"
+        if contact == ""
+        else f"{USER_AGENT} (Python library; {contact})"
+    )
+    session.headers.update({"User-Agent": agent})

@@ -10,6 +10,7 @@ from pathlib import Path
 from seqlink.model.ena_seq import ENAReader
 from seqlink.model.extract_work import ExtractWork
 from utilslink.container.bio_ent import AddDes, AddIdTaxa
+from utilslink.container.conf import AgentConf
 from utilslink.report.wish_list import create_ccno_wish_list
 from seqlink.model.container.database import (
     ReportSeq,
@@ -39,15 +40,13 @@ type _CON_UP_T = tuple[AddDes | AddIdTaxa, ...]
 
 @final
 class SeqUpdateManager:
-    __slots__ = (
-        "__work_dir",
-        "__worker",
-    )
+    __slots__ = ("__acf", "__work_dir", "__worker")
     __instance: Self | None = None
 
-    def __init__(self, work_dir: Path, worker: int, /) -> None:
+    def __init__(self, work_dir: Path, worker: int, agent: AgentConf, /) -> None:
         self.__work_dir = work_dir
         self.__worker = worker if worker > 1 else 1
+        self.__acf = agent
         super().__init__()
 
     def __new__(cls, *_args: Any) -> Self:
@@ -69,7 +68,7 @@ class SeqUpdateManager:
             seq_worker_upd,
             ctx.RLock(),
         )
-        ena_in = ENAReader(self.__work_dir, CURRENT_VER)
+        ena_in = ENAReader(self.__work_dir, CURRENT_VER, self.__acf)
         extractor = ExtractWork(self.__work_dir, CURRENT_VER)
 
         ena_w = Workable[_SEQ_UP_T, _SEQ_UP_T](ctx, PassThrough(), ena_in)

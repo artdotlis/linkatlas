@@ -8,6 +8,7 @@ from requests_cache import SQLiteCache, CachedSession, CachedResponse, OriginalR
 from publink.model.container.literature import LitUpdatePackage, LitType
 from publink.schema.open_alex import OpAlexWorksCon
 from typing import final, Callable, Final, Iterator, Iterable, Any
+from utilslink.container.conf import AgentConf
 from utilslink.context.process import get_worker_ctx
 from utilslink.iter.pack import package_data
 from utilslink.parse.date import conv_to_date_str
@@ -108,12 +109,12 @@ _FIL: Final[tuple[str, ...]] = (
 @final
 class OpenAlexReader:
     __slots__ = (
+        "__acf",
         "__backend",
         "__data",
         "__in",
         "__iter",
         "__last_req",
-        "__mail",
         "__out",
         "__package_size",
         "__version",
@@ -121,7 +122,7 @@ class OpenAlexReader:
     )
 
     def __init__(
-        self, work_dir: Path, version: str, mail: str = "", package_size: int = 1000, /
+        self, work_dir: Path, version: str, agent: AgentConf, package_size: int = 1000, /
     ) -> None:
         super().__init__()
         self.__in = True
@@ -131,7 +132,6 @@ class OpenAlexReader:
         self.__version = version
         self.__work_dir = work_dir
         self.__package_size = package_size
-        self.__mail = mail
         mpc = get_worker_ctx()
         cur_time = time.time()
         self.__last_req: CoolDown = CoolDown(
@@ -141,6 +141,7 @@ class OpenAlexReader:
             counter=mpc.Value("i", 0),
         )
         self.__backend: SQLiteCache | None = None
+        self.__acf = agent
 
     @property
     def backend(self) -> SQLiteCache:
@@ -169,7 +170,7 @@ class OpenAlexReader:
         self.backend.close()  # type: ignore
 
     def synchronize(self) -> Iterable[tuple[LitUpdatePackage, ...]]:
-        with create_simple_get_cache(7, self.backend) as session:
+        with create_simple_get_cache(7, self.backend, self.__acf.contact) as session:
 
             data_gen = (
                 LitUpdatePackage(
@@ -179,7 +180,7 @@ class OpenAlexReader:
                 )
                 for doi, date, title, abstract in _request_open_alex_works(
                     session,
-                    self.__mail,
+                    self.__acf.mail,
                     lambda call: self.__last_req.get_wait_time(call),
                     _FIL,
                 )

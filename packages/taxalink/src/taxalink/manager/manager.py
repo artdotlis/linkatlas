@@ -19,7 +19,7 @@ from taxalink.model.lpsn import LpsnTaxReader
 from taxalink.model.ncbi import NcbiTaxReader
 from taxalink.schema.designation import DesSource
 from utilslink.container.bio_ent import get_pid_type
-from utilslink.container.conf import LPSNConf
+from utilslink.container.conf import AgentConf, LPSNConf
 from utilslink.context.process import get_worker_ctx
 from utilslink.database.sqlite_manager import DatabaseWork
 from taxalink.model.database.proc.main_sqlite import init_typ_sqlite_database
@@ -43,6 +43,7 @@ type _TYP_UP_T = tuple[AddType, ...]
 @final
 class TaxaUpdateManager:
     __slots__ = (
+        "__acf",
         "__lcf",
         "__work_dir",
         "__worker",
@@ -54,11 +55,13 @@ class TaxaUpdateManager:
         work_dir: Path,
         worker: int,
         lpsn: LPSNConf,
+        agent: AgentConf,
         /,
     ) -> None:
         self.__work_dir = work_dir
         self.__worker = worker if worker > 1 else 1
         self.__lcf = lpsn
+        self.__acf = agent
         super().__init__()
 
     def __new__(cls, *_args: Any) -> Self:
@@ -80,8 +83,8 @@ class TaxaUpdateManager:
             typ_worker_upd,
             ctx.RLock(),
         )
-        ncbi_in = NcbiTaxReader(self.__work_dir, CURRENT_VER)
-        lpns_in = LpsnTaxReader(self.__work_dir, self.__lcf, CURRENT_VER)
+        ncbi_in = NcbiTaxReader(self.__work_dir, CURRENT_VER, self.__acf)
+        lpns_in = LpsnTaxReader(self.__work_dir, self.__lcf, CURRENT_VER, self.__acf)
         extractor = ExtractWork(CURRENT_VER)
 
         ncbi_up_w = Workable[_TAX_UP_T, _TAX_UP_T](ctx, PassThrough(), ncbi_in)

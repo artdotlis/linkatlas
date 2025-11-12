@@ -7,7 +7,7 @@ from urllib3 import Retry
 from requests.adapters import HTTPAdapter
 
 from utilslink.error.exceptions import SessionCreationEx
-from utilslink.request.session import create_default_retry
+from utilslink.request.session import create_default_retry, set_bot_agent_header
 from typing import Callable
 
 
@@ -50,7 +50,7 @@ def create_sqlite_backend(
 
 
 def create_simple_get_cache(
-    exp_days: int, backend: BaseCache, retry: Retry | None = None, /
+    exp_days: int, backend: BaseCache, contact: str, retry: Retry | None = None, /
 ) -> CachedSession:
     try:
         session = CachedSession(
@@ -69,4 +69,5 @@ def create_simple_get_cache(
         session.mount("https://", adapter)
     except Exception as cex:
         raise SessionCreationEx(f"{cex!s}") from cex
+    set_bot_agent_header(session, contact)
     return session
