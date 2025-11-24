@@ -142,8 +142,8 @@ wheels = [
 
 [[package]]
 name = "cafi"
-version = "0.9.5"
-source = { git = "https://github.com/LeibnizDSMZ/cafi.git?rev=v0.9.5#3238e949407d17defcd234e304f9f841df595bef" }
+version = "0.9.7"
+source = { git = "https://github.com/LeibnizDSMZ/cafi.git?rev=v0.9.7#6e6fceea1e7e93571033ce48c5b7516c5306b307" }
 dependencies = [
     { name = "pydantic" },
     { name = "requests" },
@@ -1412,8 +1412,8 @@ wheels = [
 
 [[package]]
 name = "saim"
-version = "0.9.11"
-source = { git = "https://github.com/LeibnizDSMZ/saim.git?rev=v0.9.11#0cf9497f278659ed7806dad8f95ffcd9def7927d" }
+version = "0.9.16"
+source = { git = "https://github.com/LeibnizDSMZ/saim.git?rev=v0.9.16#91b04ed5b85ebe17d17054913995ce27cadbe11e" }
 dependencies = [
     { name = "cafi" },
     { name = "playwright" },
@@ -1606,7 +1606,7 @@ requires-dist = [
     { name = "pydantic", specifier = ">=2.10,<3" },
     { name = "requests", specifier = ">2.32,<3" },
     { name = "requests-cache", specifier = ">=1.2,<2" },
-    { name = "saim", git = "https://github.com/LeibnizDSMZ/saim.git?rev=v0.9.11" },
+    { name = "saim", git = "https://github.com/LeibnizDSMZ/saim.git?rev=v0.9.16" },
     { name = "urllib3", specifier = ">=2.4,<3" },
 ]
 
