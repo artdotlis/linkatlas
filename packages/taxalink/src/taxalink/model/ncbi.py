@@ -59,7 +59,7 @@ _DEL_REG: Final[Pattern[str]] = re.compile(r"^\s*\d+\s*(\|.*)?$")
 _FIELD_TAX_TERM: Final[str] = "\t|\t"
 _ROW_TAX_TERM: Final[str] = "\t|\n"
 
-_SPE_NAME_FILTER = re.compile(r"sp\.|^[a-z]")
+_SPE_NAME_FILTER = re.compile(r"\sspp?\.|^[a-z]")
 
 
 def read_ncbi_tax_deleted(tax_csv: IO[bytes], /) -> Iterable[TaxonomyDel]:
