@@ -59,7 +59,7 @@ _DEL_REG: Final[Pattern[str]] = re.compile(r"^\s*\d+\s*(\|.*)?$")
 _FIELD_TAX_TERM: Final[str] = "\t|\t"
 _ROW_TAX_TERM: Final[str] = "\t|\n"
 
-_SPE_NAME_FILTER = re.compile(r"\sspp?\.|^[a-z]")
+_SPE_NAME_FILTER = re.compile(r"\sspp?\.$|^[a-z]")
 
 
 def read_ncbi_tax_deleted(tax_csv: IO[bytes], /) -> Iterable[TaxonomyDel]:
@@ -179,7 +179,7 @@ def _prune_path(
     return pruned_path
 
 
-def _pruna_taxa(taxa: dict[int, str], /) -> Iterable[tuple[int, str]]:
+def _prune_taxa(taxa: dict[int, str], /) -> Iterable[tuple[int, str]]:
     for tax_id, tax_nam in taxa.items():
         if _SPE_NAME_FILTER.search(tax_nam) is None:
             yield tax_id, tax_nam
@@ -255,7 +255,7 @@ def _extract_from_file(
             if (ext_res := tar.extractfile("names.dmp")) is not None:
                 tmp_cor, syn, typ = read_ncbi_tax_names(ext_res, ranks)
                 path = _prune_path(tmp_path, ranks, tmp_cor)
-                cor = {cid: cna for cid, cna in _pruna_taxa(tmp_cor)}
+                cor = {cid: cna for cid, cna in _prune_taxa(tmp_cor)}
                 yield from _create_to_add_taxa(path, ranks, cor, syn, typ)
 
 
