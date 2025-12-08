@@ -23,7 +23,7 @@ attrs==25.4.0 \
     # via
     #   cattrs
     #   requests-cache
-cafi @ git+https://github.com/LeibnizDSMZ/cafi.git@72a82fe8adce0b3ac4e9ced363550541692cf500
+cafi @ git+https://github.com/LeibnizDSMZ/cafi.git@e90398f246bba7539af28bfaaeca0dcbd54c206c
     # via saim
 cattrs==25.3.0 \
     --hash=sha256:1ac88d9e5eda10436c4517e390a4142d88638fe682c436c93db7ce4a277b884a \
@@ -219,7 +219,7 @@ mdurl==0.1.2 \
     --hash=sha256:84008a41e51615a49fc9966191ff91509e3c40b939176e643fd50a5c2196b8f8 \
     --hash=sha256:bb413d29f5eea38f31dd4754dd7377d4465116fb207585f97bf925588687c1ba
     # via markdown-it-py
-mpyflow @ git+https://github.com/artdotlis/mPyFlow.git@eb6bddd2cf651a593e0f42c799bdb0a1db71518f
+mpyflow @ git+https://github.com/artdotlis/mPyFlow.git@84014709789d69aedd0f77e7e53d28501ff2547a
     # via utilslink
 packaging==25.0 \
     --hash=sha256:29572ef2b1f17581046b3a2227d5c611fb25ec70ca1ba8554b24b0e69331a484 \
@@ -331,11 +331,11 @@ requests-toolbelt==1.0.0 \
     --hash=sha256:7681a0a3d047012b5bdc0ee37d7f8f07ebe76ab08caeccfc3921ce23c88d5bc6 \
     --hash=sha256:cccfdd665f0a24fcf4726e690f65639d272bb0637b9b92dfd91a5568ccf6bd06
     # via python-keycloak
-rich==14.1.0 \
-    --hash=sha256:536f5f1785986d6dbdea3c75205c473f970777b4a0d6c6dd1b696aa05a3fa04f \
-    --hash=sha256:e497a48b844b0320d45007cdebfeaeed8db2a4f4bcf49f15e455cfc4af11eaa8
+rich==14.2.0 \
+    --hash=sha256:73ff50c7c0c1c77c8243079283f4edb376f0f6442433aecb8ce7e6d0b92d1fe4 \
+    --hash=sha256:76bc51fe2e57d2b1be1f96c524b890b816e334ab4c1e45888799bfaab0021edd
     # via mpyflow
-saim @ git+https://github.com/LeibnizDSMZ/saim.git@2fb683286cc41f87b14e984b5fdbfa02adb69858
+saim @ git+https://github.com/LeibnizDSMZ/saim.git@5b4d047b2b04c41ad30aa7ae4472f542513b2ff0
     # via utilslink
 six==1.17.0 \
     --hash=sha256:4721f391ed90541fddacab5acf947aa0d3dc7d27b2e1e8eda2be8970586c3274 \
