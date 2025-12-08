@@ -147,8 +147,8 @@ wheels = [
 
 [[package]]
 name = "cafi"
-version = "0.9.13"
-source = { git = "https://github.com/LeibnizDSMZ/cafi.git?rev=v0.9.13#72a82fe8adce0b3ac4e9ced363550541692cf500" }
+version = "0.9.14"
+source = { git = "https://github.com/LeibnizDSMZ/cafi.git?rev=v0.9.14#e90398f246bba7539af28bfaaeca0dcbd54c206c" }
 dependencies = [
     { name = "pydantic" },
     { name = "requests" },
@@ -979,7 +979,7 @@ wheels = [
 [[package]]
 name = "mpyflow"
 version = "0.2.0"
-source = { git = "https://github.com/artdotlis/mPyFlow.git#eb6bddd2cf651a593e0f42c799bdb0a1db71518f" }
+source = { git = "https://github.com/artdotlis/mPyFlow.git#84014709789d69aedd0f77e7e53d28501ff2547a" }
 dependencies = [
     { name = "rich" },
 ]
@@ -1407,15 +1407,15 @@ wheels = [
 
 [[package]]
 name = "rich"
-version = "14.1.0"
+version = "14.2.0"
 source = { registry = "https://pypi.org/simple" }
 dependencies = [
     { name = "markdown-it-py" },
     { name = "pygments" },
 ]
-sdist = { url = "https://files.pythonhosted.org/packages/fe/75/af448d8e52bf1d8fa6a9d089ca6c07ff4453d86c65c145d0a300bb073b9b/rich-14.1.0.tar.gz", hash = "sha256:e497a48b844b0320d45007cdebfeaeed8db2a4f4bcf49f15e455cfc4af11eaa8", size = 224441, upload-time = "2025-07-25T07:32:58.125Z" }
+sdist = { url = "https://files.pythonhosted.org/packages/fb/d2/8920e102050a0de7bfabeb4c4614a49248cf8d5d7a8d01885fbb24dc767a/rich-14.2.0.tar.gz", hash = "sha256:73ff50c7c0c1c77c8243079283f4edb376f0f6442433aecb8ce7e6d0b92d1fe4", size = 219990, upload-time = "2025-10-09T14:16:53.064Z" }
 wheels = [
-    { url = "https://files.pythonhosted.org/packages/e3/30/3c4d035596d3cf444529e0b2953ad0466f6049528a879d27534700580395/rich-14.1.0-py3-none-any.whl", hash = "sha256:536f5f1785986d6dbdea3c75205c473f970777b4a0d6c6dd1b696aa05a3fa04f", size = 243368, upload-time = "2025-07-25T07:32:56.73Z" },
+    { url = "https://files.pythonhosted.org/packages/25/7a/b0178788f8dc6cafce37a212c99565fa1fe7872c70c6c9c1e1a372d9d88f/rich-14.2.0-py3-none-any.whl", hash = "sha256:76bc51fe2e57d2b1be1f96c524b890b816e334ab4c1e45888799bfaab0021edd", size = 243393, upload-time = "2025-10-09T14:16:51.245Z" },
 ]
 
 [[package]]
@@ -1486,8 +1486,8 @@ wheels = [
 
 [[package]]
 name = "saim"
-version = "0.9.24"
-source = { git = "https://github.com/LeibnizDSMZ/saim.git?rev=v0.9.24#2fb683286cc41f87b14e984b5fdbfa02adb69858" }
+version = "0.9.27"
+source = { git = "https://github.com/LeibnizDSMZ/saim.git?rev=v0.9.27#5b4d047b2b04c41ad30aa7ae4472f542513b2ff0" }
 dependencies = [
     { name = "cafi" },
     { name = "playwright" },
@@ -1671,7 +1671,7 @@ requires-dist = [
     { name = "pydantic", specifier = "==2.12.5" },
     { name = "requests", specifier = "==2.32.5" },
     { name = "requests-cache", specifier = "==1.2.1" },
-    { name = "saim", git = "https://github.com/LeibnizDSMZ/saim.git?rev=v0.9.24" },
+    { name = "saim", git = "https://github.com/LeibnizDSMZ/saim.git?rev=v0.9.27" },
     { name = "urllib3", specifier = "==2.6.0" },
 ]
 
