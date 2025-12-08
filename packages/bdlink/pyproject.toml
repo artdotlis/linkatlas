@@ -18,7 +18,7 @@ pub_update = "seqlink.update:run"
 pub_report = "seqlink.report:run"
 
 [build-system]
-requires = ["uv_build>=0.8.22,<0.9.0"]
+requires = ["uv_build>=0.9.16,<0.10.0"]
 build-backend = "uv_build"
 
 [tool.uv.sources]
