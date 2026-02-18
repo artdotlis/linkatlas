@@ -6,7 +6,7 @@ readme = "README.md"
 authors = [{ name = "artdotlis", email = "artdotlis@pm.me" }]
 requires-python = ">=3.13"
 dependencies = [
-    "urllib3 ==2.6.0",
+    "urllib3 ==2.6.3",
     "pydantic ==2.12.5",
     "requests ==2.32.5",
     "requests-cache ==1.2.1",
