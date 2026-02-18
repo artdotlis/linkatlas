@@ -1486,8 +1486,8 @@ wheels = [
 
 [[package]]
 name = "saim"
-version = "0.9.30"
-source = { git = "https://github.com/LeibnizDSMZ/saim.git?rev=v0.9.30#0cc139911a70a177310ef9905ece9df47a65818a" }
+version = "0.9.31"
+source = { git = "https://github.com/LeibnizDSMZ/saim.git?rev=v0.9.31#54307f800b733b5b1d63eab748b916a0ba43fc1c" }
 dependencies = [
     { name = "cafi" },
     { name = "playwright" },
@@ -1671,7 +1671,7 @@ requires-dist = [
     { name = "pydantic", specifier = "==2.12.5" },
     { name = "requests", specifier = "==2.32.5" },
     { name = "requests-cache", specifier = "==1.2.1" },
-    { name = "saim", git = "https://github.com/LeibnizDSMZ/saim.git?rev=v0.9.30" },
+    { name = "saim", git = "https://github.com/LeibnizDSMZ/saim.git?rev=v0.9.31" },
     { name = "urllib3", specifier = "==2.6.3" },
 ]
 
